@@ -31,3 +31,31 @@ class Home extends Component {
 
 export default Home;
 ```
+## Renderizar Componente
+
+Dentro del archivo App.js importaremos el componente Home y luego añadiremos en el metodo render el componente importado.
+
+### App.js
+```
+import React, { Component } from 'React';
+import logo from './logo.svg';
+
+// importamos aqui el componente Home
+import Home from './Home';
+import 'App.css';
+
+class App extends Component {
+    render(){
+        return (
+            <div className='App'>
+                <header className='App-header>
+                ...
+                </header>
+                // Aqui añadimos el componente
+                <Home />
+            </div>
+        )
+    }
+}
+
+```

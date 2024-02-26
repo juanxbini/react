@@ -11,9 +11,9 @@ En este capitulo de trataran los siguientes temas:
 
 ## Preparación 
 
-- Instalar node: **npm install node**
-- Instalamos create-react-app: **npm install -g create-react-app**
-- Crear aplicación: **create-react-app my-first-app**
+- Instalar node: `npm install node`
+- Instalamos create-react-app: `npm install -g create-react-app``
+- Crear aplicación: `create-react-app my-first-app``
 
 ## Estructura inicial de un componente
 

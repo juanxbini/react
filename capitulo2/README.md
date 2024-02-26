@@ -17,8 +17,8 @@ En este capitulo de trataran los siguientes temas:
 
 ## Estructura inicial de un componente
 
-´´´ 
-import React, { Component } from 'react';
+
+``` import React, { Component } from 'react'; 
 
 class Home extends Component {
     render(){
@@ -27,4 +27,4 @@ class Home extends Component {
 }
 
 export default Home;
-´´´
+```

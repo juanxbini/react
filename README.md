@@ -63,3 +63,12 @@ class App extends Component {
 }
 export default App;
 ```
+# La organización de aplicaciones React
+
+Cuando creamos la aplicación React, viene por defecto organizado. Vamos a hacer algunas modificaciones: 
+
+- Creamos los directorios src/components y src/shared
+- A continuación creamos el directorio src/components/Home y movemos el archivo Home.js a esta carpeta.
+- Los archivos App.js, App.css y App.test.js se quedarán en el nivel src/components.
+- Movemos el archivo logo.svg a src/shared/images
+- Por ultimo, index.js lo dejamos en src.

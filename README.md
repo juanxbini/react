@@ -72,3 +72,13 @@ Cuando creamos la aplicación React, viene por defecto organizado. Vamos a hacer
 - Los archivos App.js, App.css y App.test.js se quedarán en el nivel src/components.
 - Movemos el archivo logo.svg a src/shared/images
 - Por ultimo, index.js lo dejamos en src.
+
+# Estilización de componentes con clases CSS y estilos en linea.
+
+En React, una de las mejores practicas es que el estilo y el componente compartan el mismo directorio. React utiliza Webpack, el empaquetador de modulos mas popular en la actualidad. Con Webpack podes configurar de que forma quiere tratar los estilos (utilizando directamente css o un preprocesador de estilos CSS como Sass, Stylus o Less CSS), y con Webpack puede implementar modulos CSS. Esta es una forma eficaz de evitar los tres grandes problemas de CSS.
+
+- Ausencia de conflicos (sobreescritura involuntaria).
+- Dependencias explícitas (estilos por componentes).
+- No tiene alcance global.
+
+En el capitulo 10, Dominio de webpack, se describira Webpack e implementaremos modulos CSS utilizando Sass o Stylus.

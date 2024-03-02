@@ -83,7 +83,7 @@ En React, una de las mejores practicas es que el estilo y el componente comparta
 
 En el capitulo 10, Dominio de webpack, se describira Webpack e implementaremos modulos CSS utilizando Sass o Stylus.
 
-# Como hacerlo ...
+## Como hacerlo ...
 
 A continuación crearemos un nuevo archivo CSS llamado Home.css al mismo nivel que el archivo Home.js (src/components/home).
 

@@ -82,3 +82,59 @@ En React, una de las mejores practicas es que el estilo y el componente comparta
 - No tiene alcance global.
 
 En el capitulo 10, Dominio de webpack, se describira Webpack e implementaremos modulos CSS utilizando Sass o Stylus.
+
+# Como hacerlo ...
+
+A continuación crearemos un nuevo archivo CSS llamado Home.css al mismo nivel que el archivo Home.js (src/components/home).
+
+> Algunas diferencias más importantes entre JSX y HTML, son los nombres de los atributos. En JSX en vez de class como en HTML, utilizaremos className como atributo.
+
+Dentro de Home.js modificaremos algunas lineas. Primero importaremos el archivo Home.css y luego agregamos una etiqueta <p> con una descripcion y un enlace <a>. Para finalizar un <div> con la clase Home que contenga al <h1> y a <p>:
+
+#### Home.js
+
+``` 
+import React, { Component } from 'react'; 
+import './Home.css';
+
+class Home extends Component {
+    render(){
+        return (
+            <div className="Home">
+                <h1> I'm Home Component </h1>
+                <p>Visit my site: <a href="github.com/juanxbini">GitHub</a></p>
+            </div>
+            );
+    }
+}
+
+export default Home;
+```
+Ahora añadiremos estilos a Home.css:
+
+#### Home.css
+
+```
+.Home{
+    margin: 0 auto;
+    width: 960px;
+}
+
+.Home h1{
+    font-size: 32px;
+    color: #333;
+}
+
+.Home p{
+    color: #333,
+    text-align: center;
+}
+.Home a{
+    color: #56D5FA;
+    text-decoration: none;
+}
+.Home a:hover{
+    color: #333;
+}
+
+```

@@ -184,7 +184,7 @@ class Header extends Component {
 }
 export default Header;
 ```
-La propiedad Static de PropTypes es básicamente un objeto en el que necesita definir el tipo de prop que pasará. Array, bool, func, number, object, sting, y symbol son tipos primitivos, pero hay también tipor particulares, como node, element, instanceOf, arrayOf, entre otros. La propiedad isRequired es opcional, y se puede añadir a cualquier tipo de prop si este es obligatorio. React presentara un advertencia si este no está definido.
+La propiedad Static de PropTypes es básicamente un objeto en el que necesita definir el tipo de prop que pasará. Array, bool, func, number, object, string y symbol son tipos primitivos, pero hay también tipor particulares, como node, element, instanceOf, arrayOf, entre otros. La propiedad isRequired es opcional, y se puede añadir a cualquier tipo de prop si éste es obligatorio. React presentará un advertencia si éste no está definido.
 
 #### App.js
 
@@ -201,7 +201,7 @@ class App extends Component {
     render(){
         return (
             <div className='App'>
-                // Aqui añadimos el componente Header.
+                // Aquí añadimos el componente Header.
                 <Header title="Welcome to ReactApp by juanxbini"
                 <Home />
             </div>

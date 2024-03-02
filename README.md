@@ -87,9 +87,11 @@ En el capitulo 10, Dominio de webpack, se describira Webpack e implementaremos m
 
 A continuación crearemos un nuevo archivo CSS llamado Home.css al mismo nivel que el archivo Home.js (src/components/home).
 
+
 > Algunas diferencias más importantes entre JSX y HTML, son los nombres de los atributos. En JSX en vez de class como en HTML, utilizaremos className como atributo.
 
-Dentro de Home.js modificaremos algunas lineas. Primero importaremos el archivo Home.css y luego agregamos una etiqueta <p> con una descripcion y un enlace <a>. Para finalizar un <div> con la clase Home que contenga al <h1> y a <p>:
+
+Dentro de Home.js modificaremos algunas lineas. Primero importaremos el archivo Home.css y luego agregamos una etiqueta p con una descripcion y un enlace a. Para finalizar un div con la clase Home que contenga al h1 y a p:
 
 #### Home.js
 

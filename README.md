@@ -140,3 +140,74 @@ Ahora añadiremos estilos a Home.css:
 }
 
 ```
+# Paso de props a componentes y su validación con PropTypes
+
+Como en cualquier aplicación, necesitas enviar información (vía props) a distintos elementos. A continuación vamos a crear nuevos componentes: Header, Content y Footer (se agruparán en una carpeta shared/components/layout), enviaremos algunos props y los validaremos con PropTypes.
+
+Antes de continuar, debemos instalar el paquete de PropTypes para poder utilizar la validación.
+
+`npm install prop-types`
+
+PropTypes se utiliza para documentar o definir los tipos de propiedades que pretende transmitir a los componentes.
+
+#### Header.js
+
+```
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import logo from '../../images/logo.svg';
+
+class Header extends Component {
+
+    // Aquí puede definir los PropTypes
+    static propTypes = {
+        title: PropTypes.string.isRequired,
+        url: PropTypes.string
+    };
+    render(){
+        /* Aquí en la desestructuración definimos los valores de props por defecto,
+        aunque title tendremos que pasarlo si o si dada su propiedad isRequired. */
+        const {
+            title = 'Welcome to React',
+            url = 'http://localhost:3000'
+        } = this.props;
+        return (
+            <header className="App-header">
+                <a href={url}>
+                    <img src={logo} className="App-logo" alt="logo />
+                </a>
+                <h1 className="App-title">{title}</h1>
+            </header>
+        );
+    }
+
+}
+export default Header;
+```
+La propiedad Static de PropTypes es básicamente un objeto en el que necesita definir el tipo de prop que pasará. Array, bool, func, number, object, sting, y symbol son tipos primitivos, pero hay también tipor particulares, como node, element, instanceOf, arrayOf, entre otros. La propiedad isRequired es opcional, y se puede añadir a cualquier tipo de prop si este es obligatorio. React presentara un advertencia si este no está definido.
+
+#### App.js
+
+```
+import React, { Component } from 'React';
+import logo from './logo.svg';
+
+import Home from './Home';
+// Aqui importamos el componente Header.
+import Header from '../shared/components/layout/Header'
+import 'App.css';
+
+class App extends Component {
+    render(){
+        return (
+            <div className='App'>
+                // Aqui añadimos el componente Header.
+                <Header title="Welcome to ReactApp by juanxbini"
+                <Home />
+            </div>
+        )
+    }
+}
+export default App;
+```
+Todas las propiedades pasadas a los componentes están contenidas en estos props. Solamente envié el prop title dado que es el unico obligatorio. El resto será completado con los props asignados por defecto anteriormente.

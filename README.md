@@ -211,3 +211,78 @@ class App extends Component {
 export default App;
 ```
 Todas las propiedades pasadas a los componentes están contenidas en estos props. Solamente envié el prop title dado que es el unico obligatorio. El resto será completado con los props asignados por defecto anteriormente.
+
+A continuación crearemos el componente footer.
+
+#### footer.js
+
+```
+import React, { Componente } from 'react';
+
+class Footer extends Component {
+    render(){
+        return (
+            <footer> &copy r4nel {(new Date()).getFullYear()}</footer>
+        );
+    }
+}
+
+export default Footer;
+
+```
+## Pasar props como hijos
+
+Hasta ahora hemos pasado props como atributos (con componentes de cierre automático `<Component />`), pero hay otra forma de pasar props como hijos (`<Component> Children Content </Component>`). Crearemos el componente Content y enviaremos el componente Home como hijo de Content.
+
+```
+import React, { Component } from  'react';
+import PropTypes from 'prop-types';
+
+class Content extends Component{
+    static propTypes = {
+        children: PropTypes.element.isRequired;
+    }
+    render(){
+        const { children } = this.props;
+        return(
+            <main>
+                {children}
+            </main>
+        );
+    }
+}
+
+export Content;
+
+```
+Con estos cambios App.js debería verse de la siguiente forma.
+
+#### App.js
+
+```
+import React, { Component } from 'React';
+import logo from './logo.svg';
+
+import Home from './Home';
+// Aqui importamos el componente Header.
+import Header from '../shared/components/layout/Header'
+import 'App.css';
+
+class App extends Component {
+    render(){
+        return (
+            <div className='App'>
+                // Aquí añadimos el componente Header.
+                <Header title="Welcome to ReactApp by juanxbini" />
+
+                <Content>
+                    <Home />
+                </Content>
+                <Footer />
+            </div>
+        )
+    }
+}
+export default App;
+
+```

@@ -286,3 +286,69 @@ class App extends Component {
 export default App;
 
 ```
+
+# Uso del estado local en componentes
+
+El estado local es una característica fundamental de React para crear componentes dinámicos. Este solo está disponible en componentes de clase, y cada componente gestiona su estado. Puede definir el valor del estado inicial en el contructor del componente, y cuando actualice su valor, el componente se renderizará de nuevo.
+
+No se recomienda usarlo si precisa compartir datos entre componentes. En ese escenario, necesita implementar el estado Redux, que se tratará en el `Capítulo 5, Dominio de Redux`.
+
+Veamos cómo funciona el método de renderizado de un componente cuando se actualiza el estado local. Usaremos el componente `Home`, al que vamos a añadir un constructor y a definir el estado inicial.
+
+#### Home.js
+```
+
+import React, { Component } from 'react';
+import './Home.css';
+
+class Home extends Componenr {
+    
+    constructor(){
+        // necesita definir super() al principio del
+        // constructor para tener acceso a 'this
+        super();
+
+        //Aquí inicializa el estado local como un objeto
+        this.state = {
+            name: 'Carlos'
+        };
+    }
+    render(){
+        return (
+            <div className="Home">
+                //Aquí renderiza el estado del nombre
+                <p>Hi, my name is {this.state.name}</p>
+            </div>
+        );
+    }
+}
+
+export default Home;
+
+```
+## Actualización del estado local con this.setState()
+
+Tal como está ahora, el estado no se actualiza. Esto significa que el componente no se renderizará de nuevo. Podemos añadir un setTimeout para actualizar el estado de name después de 1000 ms, por lo que necesitamos modificar el método render.
+
+#### Home.js
+```
+render(){
+
+    setTimeout(() => {
+        this.setState({
+            name: 'Cristina' // Se actualiza el valor del estado
+        });
+    },1000);
+
+    console.log('Name: ', this.state.name);
+
+    return(
+        <div className="Home">
+            <p>Hi, my name is {this.state.name}</p>
+        </div>
+    );
+}
+
+```
+
+Si lo ejecutamos en un navegador, verá que el primer valor del estado es Carlos, y 1 segundo después cambiará a Cristina. Si abrimos la consola del navegador notaremos que Cristina se renderiza en un bucle infinito.

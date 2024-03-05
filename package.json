@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/juanxbini/react#readme",
   "dependencies": {
-    "node": "^21.6.2"
+    "node": "^21.6.2",
+    "prop-types": "^15.8.1"
   }
 }

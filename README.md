@@ -25,7 +25,8 @@ En este capitulo de trataran los siguientes temas:
 ## Estructura inicial de un componente
 
 
-``` import React, { Component } from 'react'; 
+``` 
+import React, { Component } from 'react'; 
 
 class Home extends Component {
     render(){
@@ -128,7 +129,7 @@ Ahora añadiremos estilos a Home.css:
 }
 
 .Home p{
-    color: #333,
+    color: #333;
     text-align: center;
 }
 .Home a{
@@ -202,7 +203,7 @@ class App extends Component {
         return (
             <div className='App'>
                 // Aquí añadimos el componente Header.
-                <Header title="Welcome to ReactApp by juanxbini"
+                <Header title="Welcome to ReactApp by juanxbini" />
                 <Home />
             </div>
         )
@@ -217,7 +218,7 @@ A continuación crearemos el componente footer.
 #### footer.js
 
 ```
-import React, { Componente } from 'react';
+import React, { Component } from 'react';
 
 class Footer extends Component {
     render(){

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import logo from '../../images/logo.svg';
+import logo from '../../shared/images/logo.svg';
 
 class Header extends Component {
 

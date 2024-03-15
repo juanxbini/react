@@ -149,6 +149,8 @@ constructor(){
 
 El método **componentWillMount()** se ejecuta una sola vez antes de montar el componente. En este caso, antes de montarlo, necesita actualizar el estado de los items con las tareas por defecto.
 
+#### Todo.js
+
 ```
 componentWillMount() {
     this.setState({
@@ -430,5 +432,66 @@ class Todo extends Component {
 
 export default Todo;
 
+
+```
+
+Ahora que hemos completado el componente Todo, haremos el componente List.
+
+#### List.js
+
+```
+import React from 'react';
+
+const List = props => (
+    <ul>
+        {props.items.map( (item, key) => {
+            
+            <li 
+                key={key}
+                className={`${item.completed ? 'completed' : 'pending'}`}> 
+                // Si la tarea se ha completado asigna la clase .completed de lo contrario
+                // .pending
+
+                {item.task}
+
+                <div className="actions">
+                    // Utilizará callback en onClick para recurrir a la función markAsCompleted
+                    <span 
+                        className={item.completed ? 'hide' : 'done'}
+                        onClick={() => props.markAsCompleted(item.id)}
+                        >
+                            <i className="fa fa-check"></i>
+                    </span>
+
+                    // Utilizará callback en onClick para recurrir a la función removeTask
+                    <span 
+                        className="trash"
+                        onClick={() => props.removeTask(item.id) }
+                        >
+                            <i className="fa fa-trash></i>
+                    </span>
+                </div>
+            </li>
+
+            })
+        }
+    </ul>
+);
+
+export default List;
+
+```
+Seguramente habrá notado que hemos incluido algunos iconos de Font Awesome, y para que funcione necesitamos añadir la CDN de Font Awesome en el archivo principal index.html
+
+#### index.html
+
+```
+<head>
+    <title>React App</title>
+    <link
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awsome.min.css" 
+    rel="stylesheet"
+    />
+</head>
 
 ```

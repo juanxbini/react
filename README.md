@@ -309,6 +309,126 @@ El componente Todo debería parecerse a:
 
 #### Todo.js 
 ```
+import React, { Component } from 'react';
+import './Todo.css';
+
+class Todo extends Component {
+    constructor() {
+        super();
+     //Estado inicial...
+        this.state = {
+          task= '',
+          items: []
+        };
+    }
+    
+    componentWillMount() {
+        this.setState({
+            items: [
+                {
+                    id: uuidv4(),
+                    task: 'Pay the rent',
+                    completed: false
+                },
+                {
+                    id: uuidv4(),
+                    task: 'Go to the gym',
+                    completed: false
+                },
+                {
+                    id: uuidv4(),
+                    task: 'Do my homework',
+                    completed: false
+                }
+            ]
+        });
+    }
+
+    handleOnChange = e => {
+        const { target: { value } } = e;
+
+        // Se actualiza el estado con el valor de entrada...
+        this.setState({
+            task: value
+        });
+    }
+
+    handleOnSubmit = e => {
+        // Con preventDefault se evita el envio del formulario...
+        e.preventDefault()
+
+        // Una vez enviado, restablece el valor de la tarea y
+        // añade la nueva tarea a la matriz de elementos
+        if(this.state.task.trim() !== '') {
+            this.setState({
+                task = '',
+                items: [
+                    ...this.state.items,
+                    {
+                        id: uuidv4(),
+                        task: this.state.task,
+                        complete: false
+                    }
+                ]
+            });
+        }   
+    }
+
+    markAsCompleted = id => {
+        // Encuentre la tarea por el id..
+        const foundTask = this.state.items.find(
+            task => tast.id == id
+        );
+
+        // Se actualiza el estado completado...
+        foundTask.completed = true;
+
+        // Se actualiza el estado con la nueva tarea actualizada
+        this.setState({
+            items: [
+                ...this.state.items,
+                ...foundTask
+            ]
+        });
+    }
+
+    removeTask = id => {
+        // Se filtran las tareas eliminando el id de la tarea ...
+        const filteredTask = this.state.items.filter(
+            task => task.id !== id
+        );
+
+        // Se actualiza el estado de los elementos...
+        this.setState({
+            items: filteredTasks
+        });
+    }
+
+    render() {
+        return (
+            <div className="Todo">
+                <h1>New Task:</h1>
+
+                <form onSubmit={this.handleOnSubmit}>
+                    <input 
+                        value={this.state.task}
+                        onChange={this.handleOnChange}
+                    />
+                </form>
+            
+                <List 
+                    items={this.state.items}
+                    markAsCompleted={this.markAsCompleted}
+                    removeTask={this.removeTask}    
+                />
+            </div>
+
+        );
+    }
+
+}
+
+export default Todo;
 
 
 ```

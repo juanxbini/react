@@ -1,30 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import logo from '../../shared/images/logo.svg';
 
-class Header extends Component {
+const Header = props => {
 
-    // Aquí puede definir los PropTypes
-    static propTypes = {
-        title: PropTypes.string.isRequired,
-        url: PropTypes.string
-    };
-    render(){
-        /* Aquí en la desestructuración definimos los valores de props por defecto,
-        aunque title tendremos que pasarlo si o si dada su propiedad isRequired. */
-        const {
-            title = 'Welcome to React',
-            url = 'http://localhost:3000'
-        } = this.props;
-        return (
-            <header className="App-header">
-                <a href={url}>
-                    <img src={logo} className="App-logo" alt="logo" />
-                </a>
-                <h1 className="App-title">{title}</h1>
-            </header>
-        );
-    }
+ // Destructuramos las props enviadas.
+    const {
+        title = 'Welcome to React',
+        url = 'http://localhost:3000'
+    } = props;
 
+    // Retornamos el JSX
+    return (
+        <header className='App-header'>
+            <a href={url}>
+                <img src={logo} className='App-logo' alt='logo' />
+            </a>
+            <h1 className='App-title'>{title}</h1>
+        </header>
+    )
 }
+// Definir props 
+Header.protoTypes = {
+
+    title: PropTypes.string.isRequired,
+    url: PropTypes.string
+
+};
+
 export default Header;

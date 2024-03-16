@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Content = props => {
 
-    const { children } = this.props;
+    const { children } = props;
 
     return(
             <main>

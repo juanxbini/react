@@ -39,6 +39,14 @@ export default Header;
 
 > Un componente funcional es equivalente a tener solo el método de renderizado. Por eso solo tiene que devolver directamente el JSX.
 
+### Destructuración de Objetos
+```
+{ title = 'Welcome to React', url = 'http://localhost:3000' } = props;
+
+```
+- `{...}`: Los corchetes indican que estamos utilizando la sintaxis de destructuración de objetos de JavaScript. Esto nos permite extraer propiedades específicas de un objeti y asignarlas a variables individuales.
+- `title = 'Welcome to React`: Esto significa que estamos extrayendo la propiedad 'title' del objeto props. Si 'props' tiene una propiedad 'title', su valor se asignará a la variable 'title'. si no lo hay, se usará su valor por defecto 'Welcome to React'.
+- Pasará lo mismo cuando extraemos `url`.
 
 Luego de migrar el componente Header, migrará el componente Footer.
 

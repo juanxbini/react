@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Footer extends Component {
-    render(){
-        return (
-            <footer> &copy r4nel {(new Date()).getFullYear()}</footer>
-        );
-    }
+const Footer = () => {
+
+    <footer>&copy r4nel { (new Date()).getFullYear() }</footer>
+
 }
+
 
 export default Footer;

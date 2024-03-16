@@ -105,12 +105,12 @@ class Todo extends Component {
 
     }
     removeTask(){
-        // Filtramos la tarea por id
+        // Cargamos los items anteriores excepto el item removido.
         const filteredTask = this.state.items.filter(
             task => task.id !== id
         )
 
-        // Actualizamos el estado sin la propiedad 
+        // Actualizamos el estado sin la propiedad.
         this.setState({
             items: filteredTask
         })

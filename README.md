@@ -288,7 +288,7 @@ markAsCompleted = id => {
     // Se actualiza el estado con la nueva tarea actualizada
     this.setState({
         items: [
-            ...this.state.items,
+            ...this.state.items.filter( task => task.id !== id),
             ...foundTask
         ]
     });
@@ -320,6 +320,8 @@ El componente Todo debería parecerse a:
 #### Todo.js 
 ```
 import React, { Component } from 'react';
+import 'uuidv6' from 'uuidv6';
+import List from './List.js';
 import './Todo.css';
 
 class Todo extends Component {

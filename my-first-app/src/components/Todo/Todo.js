@@ -4,14 +4,20 @@ import './Todo.css';
 class Todo extends Component {
     constructor(){
         super();
-        // Estado inicial
+        // Estado inicial.
         this.state = {
+
+            // Será el valor inicial del input.
             task : '',
+            // Serán las tareas cargadas.
             items : []
+
         }
 
     }
-    // Metodos de ciclo de vida
+
+    // MÉTODOS DE CICLO DE VIDA.
+
     componentDidMount(){
 
         this.setState({
@@ -36,21 +42,53 @@ class Todo extends Component {
 
     }
 
-    // Manejador de eventos
+    // MANEJO DE EVENTOS.
+
     handleOnSubmit(){
 
-    }
-    handleOnChange(){
+        // Si task no está vacío.
+        if(this.state.task.trim() !== '') {
+
+            // Entonces actualizamos el estado.
+            this.setState({
+                // Vaciamos el valor actual de la tarea ingresada.
+                task: '',
+                items: [
+                    // Cargamos los items anteriores.
+                    ...this.state.items,
+                    // Agregamos la nueva tarea ingresada.
+                    {
+                        id: uuidv4(),
+                        task: this.state.task,
+                        complete: false
+                    }
+                ]
+            });
+
+       }
 
     }
 
-    // Funcionalidades
+    handleOnChange = e => {
+        // Accedemos al valor de entrada.
+       const { target: { value }} = e;
+
+       // Actualizamos el estado con el valor de entrada.
+       this.setState({
+            task: value
+       });
+    }
+
+    // FUNCIONALIDADES.
+
     markAsCompleted(){
 
     }
     removeTask(){
 
     }
+
+    // RENDERIZADO.
 
     render(){
         return (
@@ -75,3 +113,5 @@ class Todo extends Component {
         )
     }
 }
+
+export default Todo;

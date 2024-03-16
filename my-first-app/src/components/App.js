@@ -1,9 +1,9 @@
-import logo from '../shared/images/logo.svg';
 import './App.css';
 import Home from './Home/Home.js';
 import Header from './layout/Header.js';
 import Footer from './layout/Footer.js'
 import Content from './layout/Content.js';
+import Todo from './Todo/Todo'
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Header title="Welcome to ReactApp by juanxbini" />
 
       <Content>
-        <Home />
+        <Todo />
       </Content>
 
       <Footer />

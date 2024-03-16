@@ -320,7 +320,7 @@ El componente Todo debería parecerse a:
 #### Todo.js 
 ```
 import React, { Component } from 'react';
-import 'uuidv6' from 'uuidv6';
+import 'uuidv4' from 'uuid';
 import List from './List.js';
 import './Todo.css';
 

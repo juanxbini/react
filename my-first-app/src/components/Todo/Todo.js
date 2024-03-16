@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import List from './List'
 import './Todo.css';
 
 class Todo extends Component {
@@ -82,7 +84,7 @@ class Todo extends Component {
 
     // FUNCIONALIDADES.
 
-    markAsCompleted(){
+    markAsCompleted = id => {
         // Buscamos la tarea por id.
         const foundTask = this.state.items.find(
             task => task.id == id
@@ -104,7 +106,7 @@ class Todo extends Component {
         })
 
     }
-    removeTask(){
+    removeTask = id => {
         // Cargamos los items anteriores excepto el item removido.
         const filteredTask = this.state.items.filter(
             task => task.id !== id
@@ -126,7 +128,7 @@ class Todo extends Component {
                 <form onSubmit={this.handleOnSubmit}>
 
                     <input  
-                        value={this.state.items}
+                        value={this.state.task}
                         onChange={this.handleOnChange}
                     />
 

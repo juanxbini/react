@@ -20,6 +20,7 @@ class Todo extends Component {
 
     componentDidMount(){
 
+        // Cargamos el estado por defecto antes de inicializar el componente.
         this.setState({
             items: [
                 {
@@ -82,10 +83,37 @@ class Todo extends Component {
     // FUNCIONALIDADES.
 
     markAsCompleted(){
+        // Buscamos la tarea por id.
+        const foundTask = this.state.items.find(
+            task => task.id == id
+        );
+
+        // Cambiamos la propiedad completed.
+        foundTask.completed = true;
+
+        // Actualizamos el estado.
+        this.setState({
+
+            items: [
+                // Cargamos los items anteriores excepto el item modificado.
+                ...this.state.items.filter( task => task.id !== id ),
+                // Cargamos el item modificado.
+                ...foundTask
+            ]
+
+        })
 
     }
     removeTask(){
+        // Filtramos la tarea por id
+        const filteredTask = this.state.items.filter(
+            task => task.id !== id
+        )
 
+        // Actualizamos el estado sin la propiedad 
+        this.setState({
+            items: filteredTask
+        })
     }
 
     // RENDERIZADO.

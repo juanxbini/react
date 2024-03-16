@@ -100,7 +100,7 @@ class Todo extends Component {
                 // Cargamos los items anteriores excepto el item modificado.
                 ...this.state.items.filter( task => task.id !== id ),
                 // Cargamos el item modificado.
-                ...foundTask
+                foundTask
             ]
 
         })

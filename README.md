@@ -229,5 +229,18 @@ countDown = () => {
 }
 
 ```
+La última pieza de este rompecabezas es la función `displaTimer`, que convertirá el tiempo al formato mm:ss y lo presentará al componente.
 
+#### Timer.js
+
+```
+
+displayTimer(seconds) {
+    // Formatee el tiempo a mm:ss
+    const m = Math.floor(seconds % 3600 / 60);
+    const s = Math.floor(seconds % 3600 % 60);
+    return `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`
+}
+
+```
 

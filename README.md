@@ -37,3 +37,30 @@ export default Timer;
 
 ```
 
+Para el temporizador Pomodoro, necesitamos inicializar el estado local en el constructor con valores para la hora y para la alerta (cuando el tiempo haya finalizado).
+
+### Timer.js
+
+```
+constructor(){
+    super();
+
+    // Estado inicial.
+    this.state = {
+
+        alert: {
+            type: '',
+            message: ''
+        },
+        time: 0
+
+    };
+    // Definir tiempos de trabajo, pausa corta y pausa larga.
+    this.time = {
+        defaultTime: 1500, // 25 min
+        shortBreak: 300, // 5 min
+        longBreak: 900 // 15 min
+    };
+}
+
+```

@@ -82,3 +82,56 @@ setDefaultTime = () => {
 }
 
 ```
+Después de definir el tiempo por defecto para el estado de time, veamos cómo tenemos que renderizar el temporizador Pomodoro. El método render debería ser así.
+
+#### Time.js
+
+```
+render(){
+
+    const { alert: { message, type }, time } = this.state;
+
+    return(
+
+        <div>
+        
+            <div className={`alert ${type}`}>
+                {message}
+            </div>
+
+            <div className="timer">
+                {this.displayTimer(time)}
+            </div>
+
+            <div className="type">
+
+                <button
+                    className="start"
+                    onClick={this.setTimeForWork}
+                    >
+                    Start Working
+                </button>
+                <button
+                    className="short"
+                    onClick={this.setTimeForShortBreak}
+                    >
+                    Short Break
+                </button>
+                <button
+                    className="long"
+                    onClick={this.setTimeLongBreak}
+                    >
+                    Long Break
+                </button>
+
+            </div>
+            
+        </div>
+
+    )
+
+}
+
+```
+En este caso, JSX es muy sencillo. Obtenemos los valores del estado local(message, type, y time) y presentamos un `div` para mostrar la alerta cuando el usuario recibe un mensaje de alerta. Tiene otro `div` para mostrar el temporizador, que convertirá esos segundos al formato mm:ss. La última parte del diseño son los botones para seleccionar el tiempo del temporizador, y seguramente se ha notado que ejecuta diferentes métodos en el evento onClick para cada tipo de temporizador.
+

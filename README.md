@@ -64,3 +64,21 @@ constructor(){
 }
 
 ```
+Al método componentDidMount se recurre una vez que el componente está montado y se ejecuta una sola vez. En este caso, después de haber montado el componente, necesita actualizar el estado de time con el tiempo por defecto (25 min), y para ello necesita crear un nuevo método llamado setDefaultTime y, a continuación, ejecutarlo en el método componentDidMount.
+
+#### Time.js
+
+```
+componentDidMount(){
+    // Establece el tiempo con el que se monta el componente
+    this.setDefaultTime();
+}
+
+setDefaultTime = () => {
+    // El tiempo por defecto es de 25 min
+    this.setState({
+        time: this.time.defaultTime
+    });
+}
+
+```

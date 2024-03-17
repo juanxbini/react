@@ -66,7 +66,7 @@ constructor(){
 ```
 Al método componentDidMount se recurre una vez que el componente está montado y se ejecuta una sola vez. En este caso, después de haber montado el componente, necesita actualizar el estado de time con el tiempo por defecto (25 min), y para ello necesita crear un nuevo método llamado setDefaultTime y, a continuación, ejecutarlo en el método componentDidMount.
 
-#### Time.js
+#### Timer.js
 
 ```
 componentDidMount(){
@@ -84,7 +84,7 @@ setDefaultTime = () => {
 ```
 Después de definir el tiempo por defecto para el estado de time, veamos cómo tenemos que renderizar el temporizador Pomodoro. El método render debería ser así.
 
-#### Time.js
+#### Timer.js
 
 ```
 render(){
@@ -137,7 +137,7 @@ En este caso, JSX es muy sencillo. Obtenemos los valores del estado local(messag
 
 `setTimeForWork`, `setTimeforShortBreak` y `setTimeForLongBreak`: El propósito de estas tres funciones es actualizar el mensaje de alerta dependiendo el tipo de temporización. Luego recurrir a una función estándar llamada `setTime`, pasando como parámetro el tiempo específico para cada opción.
 
-### Time.js
+### Timer.js
 
 ```
 setTimeForWork = () => {
@@ -178,4 +178,56 @@ setTimeForLongBreak = () => {
 
 Como ya sabemos, cuando especificamos métodos con funciones flecha en la clase, se vinculan automáticamente. Eso significa que no tiene que vincularlos al constructor. Ahora crearemos el metodo setTime.
 
-#### Time.js
+#### Timer.js
+
+```
+setTime = newTime => {
+    this.restartInterval();
+
+    this.setState({
+        time: newTime
+    });
+}
+
+```
+Como puede ver, ejecuta un método llamado `restartInterval()` y se actualiza el estado local con la variable newTime, que pasa como parámetro. Seguramente ha notado, por el nombre de la función, que va a usar una función `setInterval`, que se utiliza para recurrir a la funcion cada x milisiegundos. La función `restartInterval()` debería verse así:
+
+#### Timer.js
+
+```
+restartInterval = () => {
+    // Borra el intervalo
+    clearInterval(this.interval);
+
+    // Ejecuta la función countDown.
+    this.interval = setInterval(this.countDown, 1000);
+}
+
+```
+
+En este caso, primero borramos el intervalo `clearInterval(this.interval)`. Esto se debe a que el usuario puede cambiar entre los diferentes tipos de temporización, por lo que necesita borrar el intervalo cada vez que configura un nuevo temporizador. Después de borrar el intervalo, llama a la función `countDown`. La función `countDonw` es como sigue:
+
+#### Timer.js
+
+```
+countDown = () => {
+    // Si el tiempo llega a cero, se muestra la alerta buzz
+    if(this.state.time === 0){
+        this.setState({
+            alert: {
+                type: 'buzz',
+                message: 'Buuzzzzz!'
+            }
+        })
+    } else {
+        // Descuente el tiempo segundo a segundo
+        this.setState({
+            time: this.state.time - 1
+        });
+
+    }
+}
+
+```
+
+

@@ -175,3 +175,7 @@ setTimeForLongBreak = () => {
 }
 
 ```
+
+Como ya sabemos, cuando especificamos métodos con funciones flecha en la clase, se vinculan automáticamente. Eso significa que no tiene que vincularlos al constructor. Ahora crearemos el metodo setTime.
+
+#### Time.js

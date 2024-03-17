@@ -135,3 +135,43 @@ render(){
 ```
 En este caso, JSX es muy sencillo. Obtenemos los valores del estado local(message, type, y time) y presentamos un `div` para mostrar la alerta cuando el usuario recibe un mensaje de alerta. Tiene otro `div` para mostrar el temporizador, que convertirá esos segundos al formato mm:ss. La última parte del diseño son los botones para seleccionar el tiempo del temporizador, y seguramente se ha notado que ejecuta diferentes métodos en el evento onClick para cada tipo de temporizador.
 
+`setTimeForWork`, `setTimeforShortBreak` y `setTimeForLongBreak`: El propósito de estas tres funciones es actualizar el mensaje de alerta dependiendo el tipo de temporización. Luego recurrir a una función estándar llamada `setTime`, pasando como parámetro el tiempo específico para cada opción.
+
+### Time.js
+
+```
+setTimeForWork = () => {
+
+    this.setState({
+        alert: {
+            type: 'work',
+            message: 'Working!'
+        }
+    })
+
+    return this.setTime(this.times.defaultTime);
+}
+setTimeForShortBreak = () => {
+
+    this.setState({
+        alert: {
+            type: 'shortBreak',
+            message: 'Talking a Short Break!'
+        }
+    })
+
+    return this.setTime(this.time.shortBreak);
+}
+setTimeForLongBreak = () => {
+
+    this.setState({
+        alert: {
+            type: 'LongBreak',
+            message: 'Taking a Short Break!'
+        }
+    })
+
+    return this.setTime(this.time.longBreak);
+}
+
+```

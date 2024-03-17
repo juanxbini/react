@@ -39,11 +39,25 @@ const Todo = () => {
     // MANEJO DE EVENTOS.
 
     // Función para manejar cambios en el input de la tarea.
-    const handleOnChange = () => {
+    const handleOnChange = e => {
+        // Obtenemos el valor del input.
+        const { value } = e.target;
+        // Actualizamos el estado de task.
+        setTask(value);
 
     };
     // Función para manejar el envío del formulario.
-    const handleOnSubmit = () => {
+    const handleOnSubmit = e => {
+        // Prevenimos el envío del formulario.
+        e.preventDeafault();
+
+        // Verificamos si la tarea no está vacía.
+        if(task.trim() !== ''){
+            // Agregamos la nueva tarea al estado.
+            setItems([...items,{ id: uuidv4(), task: task, completed: false }])
+            // Vaciamos el input
+            setTask('')
+        }
 
     };
 
@@ -64,19 +78,19 @@ const Todo = () => {
         <div className='Todo'>
             <h1>New Task:</h1>
 
-            <form onSubmit={this.handleOnSubmit}>
+            <form onSubmit={handleOnSubmit}>
 
                 <input
                     value={this.state.task}
-                    onChange={this.handleOnChange}
+                    onChange={handleOnChange}
                 />
 
             </form>
 
             <List
-                items={this.state.items}
-                markAsCompleted={this.markAsCompleted}
-                removeTask={this.removeTask}
+                items={state.items}
+                markAsCompleted={markAsCompleted}
+                removeTask={removeTask}
             />
         </div>
     )

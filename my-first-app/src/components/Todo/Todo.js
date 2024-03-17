@@ -1,147 +1,69 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import List from './List'
 import './Todo.css';
 
-class Todo extends Component {
-    constructor(){
-        super();
-        // Estado inicial.
-        this.state = {
+const Todo = () => {
 
-            // Será el valor inicial del input.
-            task : '',
-            // Serán las tareas cargadas.
-            items : []
+    // ESTADO.
 
-        }
+    // Definimos el estado 'task' y la función 'setTask' para actualizarlo.
+    const [task, setTask] = useState('');
 
-    }
+    //Definimos el estado 'items' y la función 'setItems' para actualizarlo.
+    const [items, setItems] = useState([]);
 
-    // MÉTODOS DE CICLO DE VIDA.
+    // Establecemos el estado inicial.
+    useEffect( () => {
 
-    componentDidMount(){
-
-        // Cargamos el estado por defecto antes de inicializar el componente.
-        this.setState({
-            items: [
-                {
-                   id: uuidv4(),
-                   task: 'Pay the rent',
-                   completed: false
-                },
-                {
-                    id: uuidv4(),
-                    task: 'Go to the gym!',
-                    completed: false
-                },
-                {
-                    id: uuidv4(),
-                    task: 'Do my homework',
-                    completed: false
-                }
-            ]
-        })
-
-    }
+    }, []);
 
     // MANEJO DE EVENTOS.
 
-    handleOnSubmit(){
+    // Función para manejar cambios en el input de la tarea.
+    const handleOnChange = () => {
 
-        // Si task no está vacío.
-        if(this.state.task.trim() !== '') {
+    };
+    // Función para manejar el envío del formulario.
+    const handleOnSubmit = () => {
 
-            // Entonces actualizamos el estado.
-            this.setState({
-                // Vaciamos el valor actual de la tarea ingresada.
-                task: '',
-                items: [
-                    // Cargamos los items anteriores.
-                    ...this.state.items,
-                    // Agregamos la nueva tarea ingresada.
-                    {
-                        id: uuidv4(),
-                        task: this.state.task,
-                        complete: false
-                    }
-                ]
-            });
+    };
 
-       }
+    // FUNCIONALIDADES
 
-    }
+    // Función para marcar una tarea como completada.
+    const markAsCompleted = id => {
 
-    handleOnChange = e => {
-        // Accedemos al valor de entrada.
-       const { target: { value }} = e;
+    };
+    // Funcion para eliminar una tarea.
+    const removeTask = id => {
 
-       // Actualizamos el estado con el valor de entrada.
-       this.setState({
-            task: value
-       });
-    }
-
-    // FUNCIONALIDADES.
-
-    markAsCompleted = id => {
-        // Buscamos la tarea por id.
-        const foundTask = this.state.items.find(
-            task => task.id == id
-        );
-
-        // Cambiamos la propiedad completed.
-        foundTask.completed = true;
-
-        // Actualizamos el estado.
-        this.setState({
-
-            items: [
-                // Cargamos los items anteriores excepto el item modificado.
-                ...this.state.items.filter( task => task.id !== id ),
-                // Cargamos el item modificado.
-                foundTask
-            ]
-
-        })
-
-    }
-    removeTask = id => {
-        // Cargamos los items anteriores excepto el item removido.
-        const filteredTask = this.state.items.filter(
-            task => task.id !== id
-        )
-
-        // Actualizamos el estado sin la propiedad.
-        this.setState({
-            items: filteredTask
-        })
-    }
+    };
 
     // RENDERIZADO.
 
-    render(){
-        return (
-            <div className='Todo'>
-                <h1>New Task:</h1>
+    return (
+        <div className='Todo'>
+            <h1>New Task:</h1>
 
-                <form onSubmit={this.handleOnSubmit}>
+            <form onSubmit={this.handleOnSubmit}>
 
-                    <input  
-                        value={this.state.task}
-                        onChange={this.handleOnChange}
-                    />
+                <input
+                    value={this.state.task}
+                    onChange={this.handleOnChange}
+                />
 
-                </form>
+            </form>
 
-                <List 
-                    items = {this.state.items}
-                    markAsCompleted = {this.markAsCompleted}
-                    removeTask = {this.removeTask}
-                    />
-            </div>
-        )
-    }
+            <List
+                items={this.state.items}
+                markAsCompleted={this.markAsCompleted}
+                removeTask={this.removeTask}
+            />
+        </div>
+    )
+
 }
+
 
 export default Todo;

@@ -49,6 +49,7 @@ Ahora exploraremos cómo crear una lista de tareas utilizando React Hooks en lug
 Primero, necesitaremos crear un nuevo componente llamado Todo en la carpeta Components. Este componente contendrá la lógica para manejar las tareas.
 
 ```
+import List from './List.js';
 import React, { useState, useEffect } from 'react'; // Importamos React y los Hooks useState y useEffect desde la biblioteca de React
 import './Todo.css'; // Importamos el archivo CSS para estilizar nuestro componente
 

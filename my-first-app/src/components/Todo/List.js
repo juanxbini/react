@@ -1,14 +1,13 @@
 import React from 'react';
 
-const List = props => {
+const List = ({items, markAsCompleted, removeTask}) => {
 
     return (
         
         <ul>
-            {props.items.map((item, key)=>{
+            {items.map((item, key)=>{
 
                 return (
-
                     <li
                         key={key}
                         /* Si en el item la propiedad completed es verdadera 
@@ -21,12 +20,12 @@ const List = props => {
                             {/* Utilizara el callback en onClick para recurrir a la funcion markAsCompleted*/}
                             <span 
                                 className={`${item.completed ? 'hide' : 'none'}`}
-                                onClick={() => props.markAsCompleted(item.id)}>
+                                onClick={() => markAsCompleted(item.id)}>
                                     <i className='fa fa-check'></i>
                             </span> 
                             <span 
                                 className='trash'
-                                onClick={() => props.removeTask(item.id)}>
+                                onClick={() => removeTask(item.id)}>
                                     <i className='fa fa-trash'></i>
                             </span>
                         </div>

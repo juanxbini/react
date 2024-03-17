@@ -16,6 +16,24 @@ const Todo = () => {
     // Establecemos el estado inicial.
     useEffect( () => {
 
+        setItems(
+            {
+                id: uuidv4(),
+                task: 'Pay de Rent',
+                completed: false
+            },
+            {
+                id: uuidv4(),
+                task: 'Go to the gym!',
+                completed: false
+            },
+            {
+                id: uuidv4(),
+                task: 'Do my homework',
+                completed: false
+            }
+        )
+
     }, []);
 
     // MANEJO DE EVENTOS.

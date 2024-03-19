@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Timer.css';
+import { time } from 'console';
 
 class Timer extends Component {
 
@@ -31,6 +32,46 @@ class Timer extends Component {
         this.setState({
             time: this.times.defaultTime
         });
+    }
+
+    setTime = newTime => {
+        // reiniciamos el intervalo
+        this.restartInterval();
+        
+        // seteamos el nuevo tiempo correspondiente al tipo de timer elegido
+        console.log('SET NEW TIME', newTime)
+        this.setState({
+            time: newTime
+        });
+    }
+
+    restartInterval = () => {
+        // limpiamos el intervalo si existe
+        clearInterval(this.interval);
+        console.log('CLEAR INTERVAL', this.interval)
+
+        // seteamos un intervalo
+        setInterval(this.countDown, 1000);
+        console.log('SET INVERVAL', this.interval)
+    }
+
+    countDown = () => {
+
+        // Si time es 0 alertamos la finalizacion
+        if(this.state.time === 0){
+            this.setState({
+                alert: {
+                    type: 'buz',
+                    message: 'BUZZ!!'
+                }
+            });
+        } else {
+            // sino descontamos 1 al tiempo actual
+            this.setState({
+                time: this.state.time - 1
+            });
+            console.log("TIME:", this.state.time)
+        }
     }
     
     setTimeForWork = () => {
@@ -67,31 +108,41 @@ class Timer extends Component {
         this.setTime(this.times.longBreak)
     }
 
+    displayTimer(seconds) {
+        const m = Math.floor(seconds % 3600 / 60);
+        const s = Math.floor(seconds % 3600 % 60);
+
+        return `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+    }
+
     render(){
+
+        const { alert: { type, message }, time} = this.state;
+
         return (
             <div className='Pomodoro'>
                 <div className={`alert ${type}`}>
                     {message}
                 </div>
                 <div className='timer'>
-                    {}
+                    {this.displayTimer(time)}
                 </div>
                 <div className='type'>
                     <button
                         className='start'
-                        onClick={''}
+                        onClick={this.setTimeForWork}
                     >
                         Start Working
                     </button>
                     <button
                         className='short'
-                        onClick={''}
+                        onClick={this.setTimeForShortBreak}
                     >
                         Short Break
                     </button>
                     <button
                         className='long'
-                        onClick={''}
+                        onClick={this.setTimeForLongBreak}
                     >
                         Long Break
                     </button>

@@ -229,7 +229,7 @@ countDown = () => {
 }
 
 ```
-La última pieza de este rompecabezas es la función `displaTimer`, que convertirá el tiempo al formato mm:ss y lo presentará al componente.
+La última pieza de este rompecabezas es la función `displayTimer`, que convertirá el tiempo al formato mm:ss y lo presentará al componente.
 
 #### Timer.js
 
@@ -240,6 +240,161 @@ displayTimer(seconds) {
     const m = Math.floor(seconds % 3600 / 60);
     const s = Math.floor(seconds % 3600 % 60);
     return `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`
+}
+
+```
+
+Así debería de verse el componente completo:
+
+```
+import React, { Component } form 'react';
+
+class Timer extends Component {
+
+    constructor(){
+        super();
+
+        this.state = {
+
+            alert: {
+                type: '',
+                message: ''
+            },
+
+            time: 0
+        };
+
+        this.time = {
+            defaultTime: 1500,
+            shortBreak: 300,
+            longBreak: 900
+        };
+
+    }
+
+    componentDidMount(){
+        this.setDefaultTime();
+    }
+
+    setDefaultTime = () => {
+        this.setState({
+            time: this.time.defaultTime
+        })
+    }
+
+    setTime = newTime => {
+        this.restartInterval()
+
+        this.setState({
+            time: newTime
+        })
+    }
+
+    restartInterval = () => {
+        clearInterval(this.interval)
+        this.interval = setInterval(this.countDown, 1000);
+    }
+
+    countDown = () => {
+
+        if(this.state.time === 0){
+
+            this.setState({
+                alert: {
+                    type:  'buz',
+                    message: 'BUZZ!'
+                }
+            })
+
+        } else {
+
+            this.setState({
+                this.setState({
+                    time: this.state.time - 1
+                })
+            });
+
+        }
+
+    }
+
+    setTimeForWork = () => {
+        this.setState({
+            alert: {
+                type: 'work',
+                message: 'working!'
+            }
+        })
+        return setTime({this.times.defaultTime})
+    }
+
+    setTimeShortBreak = () => {
+        this.setState({
+            alert: {
+                type: 'short',
+                message: 'Talking a short break'
+            }
+        })
+        return setTime({this.times.shortBreak})
+    }
+
+    setTimeLongBreak = () => {
+        this.setState({
+            alert: {
+                type: 'long',
+                message: 'Talking a long break'
+            }
+        })
+        return setTime({this.times.longBreak})
+    }
+
+    displayTimer(seconds) {
+        const m = Math.floor(seconds % 3600 / 60);
+        const s = Math.floor(seconds % 3600 % 60);
+
+        return `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+    }
+ 
+    render(){
+
+        const { alert: {message, type}, time} = this.state;
+
+        return (
+
+            <div>
+                <div className={`alert ${type}`}>
+                    {message}
+                </div>
+                <div className='timer'>
+                    {this.displayTimer(time)}
+                </div>
+                <div className='type'>
+                    
+                    <button
+                        className='start'
+                        onClick={this.setTimeForWork}
+                        >
+                        
+                    </button>
+                    <button
+                        className='short'
+                        onClick={this.setTimeShortBreak}
+                        >
+
+                    </button>
+                    <button
+                        className='long'
+                        onClick={this.setTimeLongBreak}
+                        >
+                    
+                    </button>
+
+                </div>
+            </div>
+
+        )
+    }
+
 }
 
 ```

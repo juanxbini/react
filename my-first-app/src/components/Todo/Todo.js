@@ -47,8 +47,8 @@ class Todo extends Component {
 
     // MANEJO DE EVENTOS.
 
-    handleOnSubmit(){
-
+    handleOnSubmit = e =>{
+        e.preventDefault()
         // Si task no está vacío.
         if(this.state.task.trim() !== '') {
 

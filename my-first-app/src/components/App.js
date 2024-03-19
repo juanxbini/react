@@ -4,6 +4,7 @@ import Header from './layout/Header.js';
 import Footer from './layout/Footer.js'
 import Content from './layout/Content.js';
 import Todo from './Todo/Todo'
+import Timer from './Timer/Timer.js';
 
 function App() {
   return (
@@ -12,7 +13,13 @@ function App() {
       <Header title="Welcome to ReactApp by juanxbini" />
 
       <Content>
+        <Home />
+      </Content>
+      <Content>
         <Todo />
+      </Content>
+      <Content>
+        <Timer />
       </Content>
 
       <Footer />

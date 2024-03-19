@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Timer.css';
-import { time } from 'console';
 
 class Timer extends Component {
 
@@ -39,7 +38,6 @@ class Timer extends Component {
         this.restartInterval();
         
         // seteamos el nuevo tiempo correspondiente al tipo de timer elegido
-        console.log('SET NEW TIME', newTime)
         this.setState({
             time: newTime
         });
@@ -48,11 +46,9 @@ class Timer extends Component {
     restartInterval = () => {
         // limpiamos el intervalo si existe
         clearInterval(this.interval);
-        console.log('CLEAR INTERVAL', this.interval)
-
+    
         // seteamos un intervalo
-        setInterval(this.countDown, 1000);
-        console.log('SET INVERVAL', this.interval)
+        this.interval = setInterval(this.countDown, 1000);
     }
 
     countDown = () => {
@@ -70,7 +66,6 @@ class Timer extends Component {
             this.setState({
                 time: this.state.time - 1
             });
-            console.log("TIME:", this.state.time)
         }
     }
     

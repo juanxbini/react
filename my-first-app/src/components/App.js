@@ -5,6 +5,7 @@ import Footer from './layout/Footer.js'
 import Content from './layout/Content.js';
 import Todo from './Todo/Todo'
 import Timer from './Timer/Timer.js';
+import Coins from './Coins/Coins.js';
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
       </Content>
       <Content>
         <Timer />
+      </Content>
+      <Content>
+        <Coins />
       </Content>
 
       <Footer />
